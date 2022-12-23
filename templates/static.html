@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	{% load static %}
+<meta charset="utf-8">
+<title>static</title>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Graphs</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{% static 'css.css' %}">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<style>
+    table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  font-size: 17px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.w3-display-topmiddle {
+    position: absolute;
+    top: 0;
+    /* transform: translate(-50%,0%); */
+    width: 100%;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+</style>
+
+</head>
+
+<body >
+	<div class="w3-top">
+		<div class="w3-bar w3-card w3-text-white w3-black">
+		  <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+		  <a href="{% url 'home' %} " class="w3-bar-item w3-button w3-padding-large">HOME</a>
+		  <!-- <a href="#band" class="w3-bar-item w3-button w3-padding-large w3-hide-small">BAND</a> -->
+		  <a href="/dis" class="w3-bar-item w3-button w3-padding-large w3-hide-small">System Infromation</a>
+		  <a href="/grp" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Graphs</a>
+		  <a href="/stat" class="w3-bar-item w3-button w3-padding-large w3-hide-small">Can you RUN it?</a>
+		  <!-- <div class="w3-dropdown-hover w3-hide-small">
+			<button class="w3-padding-large w3-button" title="More">More<i class="fa fa-caret-down"></i></button>     
+			<div class="w3-dropdown-content w3-bar-block w3-card-4">
+			  <a href="/scrap" class="w3-bar-item w3-button">Merchandise</a>
+			  <a href="/dis" class="w3-bar-item w3-button">Stat</a>
+			  <a href="/grp" class="w3-bar-item w3-button">Graphs</a>
+			</div>
+		  </div> -->
+		  <a href="javascript:void(0)" class="w3-padding-large w3-hover-red w3-hide-small w3-right"><i class="fa fa-search"></i></a>
+		</div>
+	  </div>
+	  <div style="padding-top: 5%;"><br></div>
+	<center >
+		<h1>Your System Infromation</h1>
+	</center>
+	<div>
+		<div class="grid-container">
+			
+			<div class="grid-item">
+				<div>
+					<br>
+				</div>
+				<table>
+					<tr>
+					  <th>Parameters</th>
+					  <th>Values</th>
+					</tr>
+					{% for key,val in d.items %}
+					<tr>
+					  <td>{{key}}</td>
+					  <td>{{val}}</td>
+					</tr>
+					{% endfor %}
+					
+				  </table>
+			</div>
+			<div class="grid-item">
+				<center>
+					<img src="{% static 'mon.png' %}" style="width: 40%;">
+				</center>
+				<div class="grid-container">
+					<div class="grid-item">
+						<img src="{% static 'user.png' %}" style="width: 50%;">
+						<center><p style="font-size: 20px;">USER</p></center>
+						<center><p style="font-size: 20px;">{{d.NodeName}}</p></center>
+					</div>
+					<div class="grid-item">
+						<img src="{% static 'pro2.png' %}" style="width: 50%;">
+						<center><p style="font-size: 20px;">PROCESSOR</p></center>
+						<center><p style="font-size: 20px;">{{d.Processor}}</p></center>
+					</div>
+					<div class="grid-item">
+						<img src="{% static 'OS.png' %}" style="width: 50%;">
+						<center><p style="font-size: 20px;">OS</p></center>
+						<center><p style="font-size: 20px;">{{d.OperatingSystem}}</p></center>
+					</div>  
+					<div class="grid-item">
+						<img src="{% static 'ram.png' %}" style="width: 50%;">
+						<center><p style="font-size: 20px;">RAM</p></center>
+						<center><p style="font-size: 20px;">{{d.RAM}}</p></center>
+					</div> 
+				  </div>
+			</div> 
+		  </div>
+		
+	</div>
+</body>
+
+</html>
